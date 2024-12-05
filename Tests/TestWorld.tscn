@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8cb2c6t1dqm1"]
+
+[ext_resource type="PackedScene" uid="uid://bmr31byyrgk4b" path="res://Player/Scenes/Player.tscn" id="1_q4tlo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8fftc"]
+size = Vector3(11.8419, 0.633667, 15.5442)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prqkf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh4sv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q3km3"]
+
+[node name="TestWorld" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95499, -0.863939, -5.11693)
+shape = SubResource("BoxShape3D_8fftc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(11.5259, 0, 0, 0, 1, 0, 0, 0, 15.288, -2.05778, -1.03103, -5.19063)
+material_override = SubResource("StandardMaterial3D_prqkf")
+material_overlay = SubResource("StandardMaterial3D_mh4sv")
+mesh = SubResource("BoxMesh_q3km3")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.504196, 0.863589, 0, -0.863589, 0.504196, 0, 27.9739, 18.7512)
+
+[node name="Player" parent="." instance=ExtResource("1_q4tlo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15067, -0.547105, -3.52588)
