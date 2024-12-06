@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bleak Horizons"
-run/main_scene="res://Player/Scenes/Player.tscn"
+run/main_scene="res://Levels/Scenes/MainLevel.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 
