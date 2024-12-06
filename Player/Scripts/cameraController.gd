@@ -6,13 +6,14 @@ var camroot_h = 0
 var camroot_v = 0
 @export var cam_v_max = 75
 @export var cam_v_min = -55
-@export var cam_max_zoom = -5
-@export var cam_min_zoom = -10
 var h_sensitivity: float = 0.01
 var v_sensitivity: float = 0.01
 var h_acceleration: float = 10.0
 var v_acceleration: float = 10.0
-@onready var current_zoom = cam_min_zoom
+
+@export var cam_max_zoom = -5 #maximum zoom in value
+@export var cam_min_zoom = -10 #controls max distance of cam to player - is also the default zoom
+@onready var current_zoom = cam_min_zoom #logs the 'current' zoom value to the minimum, which is also the default, on start
 
 
 
@@ -43,5 +44,5 @@ func _physics_process(delta: float) -> void:
 	get_node("h").rotation.y = lerpf(get_node("h").rotation.y, camroot_h, delta*h_acceleration)
 	get_node("h/v").rotation.x = lerpf(get_node("h/v").rotation.x, camroot_v, delta*v_acceleration)
 	
-	current_zoom = clamp(current_zoom, cam_min_zoom+1, cam_max_zoom+1) #limits camera zoom
+	current_zoom = clamp(current_zoom, cam_min_zoom+1, cam_max_zoom+1) #limits camera zoo between max and min (+1 to prevent overspill)
 	get_node("h/v").spring_length = current_zoom #ties camera spring arm to the set zoom amount 
