@@ -30,3 +30,13 @@ var movement_speed: int
 var angular_acceleration: int
 var acceleration: int
 var just_hit:bool = false
+
+func _ready() -> void:
+	pass
+
+func _input(event: InputEvent) -> void:
+	pass
+
+func _physics_process(delta: float) -> void:
+	pass
+
