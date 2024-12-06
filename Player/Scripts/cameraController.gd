@@ -12,14 +12,13 @@ var h_sensitivity: float = 0.01
 var v_sensitivity: float = 0.01
 var h_acceleration: float = 10.0
 var v_acceleration: float = 10.0
-var current_zoom 
+@onready var current_zoom = cam_min_zoom
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_node("h/v").spring_length = cam_min_zoom
-	current_zoom = get_node("h/v").spring_length #allows for the setting of the cameras default zoom via min zoom
+	get_node("h/v").spring_length = cam_min_zoom #sets the spring length to the minimum zoom level at startup
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #captures future mouse inputs
 
