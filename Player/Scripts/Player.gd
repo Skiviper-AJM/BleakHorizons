@@ -20,6 +20,12 @@ var jump_node_name:String = "Jump"
 var attack1_node_name:String = "Attack1"
 var death_node_name:String = "Death_A"
 
+#state machine
+var is_attacking: bool
+var is_walking: bool
+var is_running: bool
+var is_dying: bool
+
 #physics vals
 var direction: Vector3
 var horizontal_velocity: Vector3
@@ -31,12 +37,29 @@ var angular_acceleration: int
 var acceleration: int
 var just_hit:bool = false
 
+@onready var camrot_h = get_node("camroot/h")
+
 func _ready() -> void:
-	pass
+	
+	direction = Vector3.BACK.rotated(Vector3.UP, camrot_h.global_transform.basis.get_euler().y)
 
 func _input(event: InputEvent) -> void:
-	pass
-
+	if event is InputEventMouseMotion:
+		aim_turn = -event.relative.x * 0.15
+	
+	# controls aiming ranged weapons - add a tag to check if its a ranged weapon!
+	if event.is_action_pressed("Attack"):
+		direction = camrot_h.global_transform.basis.z
+	
+	
 func _physics_process(delta: float) -> void:
-	pass
-
+	if !is_dying:
+		var h_rot = camrot_h.global_transform.basis.get_euler().y
+		#handles WASD directional input
+		if (Input.is_action_pressed("MoveForward") || Input.is_action_pressed("MoveBack") || Input.is_action_pressed("MoveLeft") || Input.is_action_pressed("MoveRight")):
+			#subtracts opposing directions by each other when pressed simultaniously to prevent moving 
+			direction = Vector3(Input.get_action_strength("MoveLeft") - Input.get_action_strength("MoveRight"), 
+						0,
+						Input.get_action_strength("MoveForward") - Input.get_action_strength("MoveBack"))
+			direction = direction.rotated(Vector3.UP, h_rot).normalized()
+			

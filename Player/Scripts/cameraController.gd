@@ -33,10 +33,10 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if Input.is_action_pressed("CameraZoomIn"):
 			current_zoom += 1 #zoom in
-			print("Zoom is at" + str(current_zoom))
+			#print("Zoom is at" + str(current_zoom))
 		elif Input.is_action_pressed("CameraZoomOut"):
 			current_zoom -= 1 #zoom out
-			print("Zoom is at" + str(current_zoom))
+			#print("Zoom is at" + str(current_zoom))
 	
 	
 
