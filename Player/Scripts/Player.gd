@@ -48,12 +48,16 @@ func _input(event: InputEvent) -> void:
 		aim_turn = -event.relative.x * 0.15
 	
 	# controls aiming ranged weapons - add a tag to check if its a ranged weapon!
-	if event.is_action_pressed("Attack"): #aim
+	if event.is_action_pressed("LockOn"): #aim
 		direction = camrot_h.global_transform.basis.z
 	
 	
 func _physics_process(delta: float) -> void:
 	if !is_dying:
+		#test values
+		angular_acceleration = 10
+		movement_speed = 0
+		acceleration = 15
 		var h_rot = camrot_h.global_transform.basis.get_euler().y
 		#handles WASD directional input
 		if (Input.is_action_pressed("MoveForward") || Input.is_action_pressed("MoveBack") || Input.is_action_pressed("MoveLeft") || Input.is_action_pressed("MoveRight")):
@@ -63,7 +67,7 @@ func _physics_process(delta: float) -> void:
 						Input.get_action_strength("MoveForward") - Input.get_action_strength("MoveBack"))
 			direction = direction.rotated(Vector3.UP, h_rot).normalized()
 		
-		if Input.is_action_pressed("Attack"): #aim
+		if Input.is_action_pressed("LockOn"): #aim
 			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, camrot_h.rotation.y, delta*angular_acceleration)
 		else: 
 			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta*angular_acceleration)
