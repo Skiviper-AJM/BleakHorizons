@@ -48,7 +48,7 @@ func _input(event: InputEvent) -> void:
 		aim_turn = -event.relative.x * 0.15
 	
 	# controls aiming ranged weapons - add a tag to check if its a ranged weapon!
-	if event.is_action_pressed("Attack"):
+	if event.is_action_pressed("Attack"): #aim
 		direction = camrot_h.global_transform.basis.z
 	
 	
@@ -62,4 +62,8 @@ func _physics_process(delta: float) -> void:
 						0,
 						Input.get_action_strength("MoveForward") - Input.get_action_strength("MoveBack"))
 			direction = direction.rotated(Vector3.UP, h_rot).normalized()
-			
+		
+		if Input.is_action_pressed("Attack"): #aim
+			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, camrot_h.rotation.y, delta*angular_acceleration)
+		else: 
+			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta*angular_acceleration)
