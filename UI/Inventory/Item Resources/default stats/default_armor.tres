@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://7dscqowvii60"]
+
+[ext_resource type="Texture2D" uid="uid://0kem17n1cap7" path="res://UI/Sprites/Items/Item__56.png" id="1_fniy8"]
+[ext_resource type="Script" path="res://UI/Scripts/item_data.gd" id="2_aqy40"]
+
+[resource]
+resource_name = "default_sword"
+script = ExtResource("2_aqy40")
+type = 9
+item_name = "Default Armor"
+item_damage = 0
+item_defense = 1
+item_health = 0
+item_mana = 0
+stackable = false
+count = 0
+description = "Dog water armor, but its better than being naked."
+item_texture = ExtResource("1_fniy8")

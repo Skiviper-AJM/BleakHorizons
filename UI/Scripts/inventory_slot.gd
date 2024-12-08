@@ -39,8 +39,8 @@ func _physics_process(delta: float) -> void:
 			ItemData.Type.ARMOR:
 				PlayerData.armor_equipped = item.data
 			_:
-				PlayerData.main_hand_equipped =load("res://UI/Inventory/Item Resources/default_sword.tres")
-				PlayerData.armor_equipped =load("res://UI/Inventory/Item Resources/body armor.tres")
+				PlayerData.main_hand_equipped =load("res://UI/Inventory/Item Resources/default stats/default_sword.tres")
+				PlayerData.armor_equipped =load("res://UI/Inventory/Item Resources/default stats/default_armor.tres")
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

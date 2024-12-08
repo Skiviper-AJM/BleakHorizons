@@ -3,10 +3,11 @@ extends Node
 
 
 var items = {
-	"default": preload("res://UI/Inventory/Item Resources/default_sword.tres"),
+	"default": preload("res://UI/Inventory/Item Resources/default stats/default_sword.tres"),
 	"long sword": preload("res://UI/Inventory/Item Resources/long Sword.tres"),
 	"small potion": preload("res://UI/Inventory/Item Resources/small potion.tres"),
 	"body armor": preload("res://UI/Inventory/Item Resources/body armor.tres"),
+	"default armor": preload("res://UI/Inventory/Item Resources/default stats/default_armor.tres")
 	
 }
 
@@ -23,9 +24,12 @@ var current_exp: int = 0
 var exp_to_next_level: int = 100
 var player_level: int = 1
 
-
 func _ready():
-	gain_exp(1000)
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _process(delta):
+	player_damage = main_hand_equipped.item_damage
+	player_defense = armor_equipped.item_defense
 
 func heal_player(amount):
 	player_health += amount

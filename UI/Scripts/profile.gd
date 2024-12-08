@@ -11,6 +11,6 @@ func _process(delta):
 	Player EXP: %s / %s
 	
 	
-	" %[PlayerData.player_health, PlayerData.main_hand_equipped.item_damage, PlayerData.armor_equipped.item_defense, PlayerData.player_level, PlayerData.current_exp, PlayerData.exp_to_next_level]
+	" %[PlayerData.player_health, PlayerData.player_damage, PlayerData.player_defense, PlayerData.player_level, PlayerData.current_exp, PlayerData.exp_to_next_level]
 	
 	

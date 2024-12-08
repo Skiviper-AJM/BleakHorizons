@@ -218,7 +218,9 @@ func hit(damage):
 		
 	if !just_hit:
 		get_node("just_hit").start()
-		PlayerData.player_health -= damage
+		var damage_done = damage - PlayerData.player_defense
+		if damage_done > 0:
+			PlayerData.damage_player(damage_done)
 		just_hit = true
 		if PlayerData.player_health <= 0:
 			is_dying = true
