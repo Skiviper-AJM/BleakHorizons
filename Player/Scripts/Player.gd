@@ -40,6 +40,8 @@ var just_hit:bool = false
 const MAX_STEP_HEIGHT = 0.5
 var _snapped_to_stairs_last_frame := false
 var _last_frame_was_on_floor = -INF
+var was_on_floor_last_frame
+var floor_below : bool 
 
 @onready var camrot_h = get_node("camroot/h")
 
@@ -63,11 +65,17 @@ func is_surface_too_steep(normal: Vector3) -> bool:
 #snaps down the stairs the frame after they are left
 func _snap_down_to_stairs_check() -> void:
 	var did_snap := false
-	var was_on_floor_last_frame = Engine.get_physics_frames() - _last_frame_was_on_floor == 1
-	if not is_on_floor() and velocity.y <= 0 and (was_on_floor_last_frame or _snapped_to_stairs_last_frame):
+	floor_below = %StairsBelowRayCast3D.is_colliding() and not is_surface_too_steep(%StairsBelowRayCast3D.get_collision_normal())
+	was_on_floor_last_frame = Engine.get_physics_frames() - _last_frame_was_on_floor == 1
+	
+	if not is_on_floor() and velocity.y <= 0 and (was_on_floor_last_frame or _snapped_to_stairs_last_frame) and floor_below:
 		var body_test_result = PhysicsTestMotionResult3D.new()
 		if _run_body_test_motion(self.global_transform, Vector3(0, -MAX_STEP_HEIGHT,0), body_test_result):
 			var translate_y = body_test_result.get_travel().y
+			self.position.y += translate_y
+			apply_floor_snap()
+			did_snap = true
+		_snapped_to_stairs_last_frame = did_snap
 
 func _run_body_test_motion(from : Transform3D, motion : Vector3, result = null) -> bool:
 	if not result: result = PhysicsTestMotionResult3D.new()
@@ -135,6 +143,7 @@ func _physics_process(delta: float) -> void:
 				is_walking = true
 				is_running = false
 		else:
+			
 			is_walking = false
 			is_running = false
 			
@@ -153,6 +162,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = horizontal_velocity.x + vertical_velocity.x
 		velocity.y = vertical_velocity.y
 		move_and_slide()
+		_snap_down_to_stairs_check()
 	
 
 	
