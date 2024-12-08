@@ -1,5 +1,14 @@
 extends Node
 
+
+
+var items = {
+	"default": preload("res://UI/Inventory/Item Resources/default_sword.tres"),
+	"long sword": preload("res://UI/Inventory/Item Resources/long Sword.tres"),
+	"small potion": preload("res://UI/Inventory/Item Resources/small potion.tres"),
+	
+}
+
 var player_health: int = 10
 var player_max_health: int = 10
 

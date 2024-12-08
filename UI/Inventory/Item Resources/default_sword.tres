@@ -11,6 +11,7 @@ item_name = "Default Sword"
 item_damage = 2
 item_defense = 0
 item_health = 0
+item_mana = 0
 stackable = false
 count = 0
 description = ""
