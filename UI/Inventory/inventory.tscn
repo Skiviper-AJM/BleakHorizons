@@ -29,6 +29,7 @@ offset_top = 456.0
 offset_right = 136.0
 offset_bottom = 496.0
 script = ExtResource("2_sqkc7")
+type = 9
 
 [node name="Feet" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -37,6 +38,7 @@ offset_top = 568.0
 offset_right = 136.0
 offset_bottom = 608.0
 script = ExtResource("2_sqkc7")
+type = 8
 
 [node name="OffHand" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -45,6 +47,7 @@ offset_top = 456.0
 offset_right = 192.0
 offset_bottom = 496.0
 script = ExtResource("2_sqkc7")
+type = 5
 
 [node name="MainHand" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -61,6 +64,7 @@ offset_top = 512.0
 offset_right = 136.0
 offset_bottom = 552.0
 script = ExtResource("2_sqkc7")
+type = 7
 
 [node name="Head" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -69,6 +73,7 @@ offset_top = 400.0
 offset_right = 136.0
 offset_bottom = 440.0
 script = ExtResource("2_sqkc7")
+type = 6
 
 [node name="RingA" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -77,6 +82,7 @@ offset_top = 512.0
 offset_right = 248.0
 offset_bottom = 552.0
 script = ExtResource("2_sqkc7")
+type = 1
 
 [node name="RingB" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -85,3 +91,22 @@ offset_top = 568.0
 offset_right = 248.0
 offset_bottom = 608.0
 script = ExtResource("2_sqkc7")
+type = 1
+
+[node name="HealthPotions" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 512.0
+offset_right = 304.0
+offset_bottom = 552.0
+script = ExtResource("2_sqkc7")
+type = 3
+
+[node name="ManaPotions" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 568.0
+offset_right = 304.0
+offset_bottom = 608.0
+script = ExtResource("2_sqkc7")
+type = 4
