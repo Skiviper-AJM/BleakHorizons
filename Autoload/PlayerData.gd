@@ -38,11 +38,11 @@ func _process(delta):
 	player_defense = armor_equipped.item_defense
 
 func heal_player(amount):
+	self.emit_signal("health_changed", -amount)
 	player_health += amount
 	if player_health > player_max_health:
 		player_health = player_max_health #prevents overheal
-	else:
-		self.emit_signal("health_changed", amount)
+
 
 func gain_exp(exp_amount: int):
 	current_exp += exp_amount
