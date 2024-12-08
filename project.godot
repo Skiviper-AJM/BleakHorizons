@@ -24,6 +24,7 @@ PlayerData="*res://Autoload/PlayerData.gd"
 [gui]
 
 theme/custom="res://Assets/default.tres"
+theme/custom_font="res://Assets/Fonts/joystix/joystix monospace.otf"
 
 [input]
 

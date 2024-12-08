@@ -15,3 +15,11 @@ theme_override_font_sizes/font_size = 40
 text = "GAME OVER - TRY AGAIN!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 392.0
+offset_right = 648.0
+offset_bottom = 440.0
+text = "Retry?"
