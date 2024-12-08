@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://ch713cu7083rm"]
+[gd_scene load_steps=2 format=3 uid="uid://ch713cu7083rm"]
+
+[ext_resource type="Script" path="res://UI/Scripts/Game Over Overlay.gd" id="1_ckgsf"]
 
 [node name="Game Over Overlay" type="CanvasLayer"]
 layer = 2
+script = ExtResource("1_ckgsf")
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 1152.0
@@ -16,10 +19,12 @@ text = "GAME OVER - TRY AGAIN!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="retry" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 464.0
 offset_top = 392.0
 offset_right = 648.0
 offset_bottom = 440.0
 text = "Retry?"
+
+[connection signal="pressed" from="Panel/retry" to="." method="_on_retry_pressed"]

@@ -223,6 +223,7 @@ func hit(damage):
 		if PlayerData.player_health <= 0:
 			is_dying = true
 			playback.travel(death_node_name)
+			get_node("../Game Over Overlay").game_over()
 		#knockback
 		var tween = create_tween()
 		tween.tween_property(self, "global_position", global_position - (direction/1.5), 0.2)
