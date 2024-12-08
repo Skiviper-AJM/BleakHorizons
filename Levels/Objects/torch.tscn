@@ -115,3 +115,6 @@ local_coords = true
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_b5ink")
 draw_pass_1 = SubResource("QuadMesh_1wvvm")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.788235, 0.2, 0, 1)

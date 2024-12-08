@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://blbkgpv5ir51v"]
+[gd_scene load_steps=11 format=3 uid="uid://blbkgpv5ir51v"]
 
 [ext_resource type="MeshLibrary" uid="uid://deoo0e1p61i6j" path="res://Levels/MeshLibrary.tres" id="1_mff2p"]
 [ext_resource type="PackedScene" uid="uid://dbg7infqbmg2a" path="res://Player/Scenes/player.tscn" id="2_akhee"]
 [ext_resource type="PackedScene" uid="uid://ctscipieoqifl" path="res://Enemies/Scenes/EnemyMelee.tscn" id="3_txn3b"]
 [ext_resource type="PackedScene" uid="uid://ch713cu7083rm" path="res://UI/Scenes/Game Over Overlay.tscn" id="4_a06ns"]
+[ext_resource type="PackedScene" uid="uid://dcjymh4mqbiit" path="res://Enemies/Scenes/EnemyRanged.tscn" id="4_thydy"]
 [ext_resource type="PackedScene" uid="uid://bu2q4ulivow8b" path="res://UI/Scenes/GUI.tscn" id="5_qljls"]
 [ext_resource type="PackedScene" uid="uid://hskj4u5lquof" path="res://UI/Scenes/item_object.tscn" id="6_ddbui"]
 [ext_resource type="PackedScene" uid="uid://k8me5x5jqfie" path="res://Levels/Objects/torch.tscn" id="7_iw1m0"]
@@ -101,3 +102,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.16481, 1.61989, -14.6604)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.932, 1.61989, -13.9307)
 
 [node name="NPC Mage" parent="Objects" instance=ExtResource("7_p7op3")]
+
+[node name="Projectiles" type="Node3D" parent="."]
+
+[node name="Mage Skelly" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_thydy")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -49, -2, -10)
+player = NodePath("../player")
