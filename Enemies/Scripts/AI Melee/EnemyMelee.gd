@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const SPEED = 1.0
 
-
+@onready var item_object_scene = preload("res://UI/Scenes/item_object.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -61,7 +61,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		if player in $attack_player_detection.get_overlapping_bodies():
 			state_controller.change_state("Attack")
 	elif "Death" in anim_name:
-		self.queue_free()
+		death()
 
 
 func hit(damage):
@@ -82,3 +82,12 @@ func _on_damage_detector_body_entered(body):
 	if body.is_in_group("player"):
 		body.hit(damage)
 
+func death():
+	var rng = randi_range(2,4)
+	
+	for i in rng:
+		var item_object_temp = item_object_scene.instantiate()
+		item_object_temp.global_position = self.global_position
+		get_node("../Items").add_child(item_object_temp)
+	PlayerData.gain_exp(100)
+	self.queue_free()
