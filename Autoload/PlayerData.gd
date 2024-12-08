@@ -38,16 +38,19 @@ func _process(delta):
 	player_defense = armor_equipped.item_defense
 
 func heal_player(amount):
-	self.emit_signal("health_changed", amount)
 	player_health += amount
 	if player_health > player_max_health:
 		player_health = player_max_health #prevents overheal
+	else:
+		self.emit_signal("health_changed", amount)
 
 func gain_exp(exp_amount: int):
 	current_exp += exp_amount
 	while current_exp >= exp_to_next_level:
 		#level up
 		player_level += 1
+		player_max_health += player_level
+		player_health = player_max_health
 		current_exp -= exp_to_next_level
 		exp_to_next_level = round(exp_to_next_level*1.3)
 		exp_to_next_level = exp_to_next_level* pow(1.2, player_level - 1)
