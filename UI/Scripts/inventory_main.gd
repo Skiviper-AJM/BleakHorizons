@@ -12,7 +12,7 @@ func _ready() -> void:
 		var slot = InventorySlot.new()
 		slot.init(ItemData.Type.MAIN, Vector2(32,32))
 		get_node("grid").add_child(slot)
-	
+	add_item("body armor")
 
 
 func add_item(item_name:String) -> void:

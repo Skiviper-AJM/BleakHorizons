@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if Input.is_action_pressed("Block"):
+		if (event.button_index == 2) and (event.button_mask == 0):
 			if get_child_count() > 0:
 				#drink healing potion if you clicked it
 				if (get_child(0).data.type == ItemData.Type.HPOTION):
