@@ -58,6 +58,10 @@ func _physics_process(delta: float) -> void:
 	
 	if !is_dying:
 		
+		#checks states
+		attack1()
+		
+		
 		#gravity to stick you to the floor
 		if !on_floor:
 			vertical_velocity += Vector3.DOWN*gravity*2*delta
@@ -93,7 +97,7 @@ func _physics_process(delta: float) -> void:
 			
 			
 			#handled running logic
-			if Input.is_action_pressed("Run") and (is_walking):
+			if Input.is_action_pressed("Run") and (is_walking) and (!is_attacking):
 				movement_speed = run_speed
 				is_running = true
 				
@@ -121,6 +125,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = vertical_velocity.y
 		move_and_slide()
 	
+	
+	#binds the animation trees conditions to the ones in this script
 	animation_tree["parameters/conditions/IsOnFloor"] = on_floor
 	animation_tree["parameters/conditions/IsInAir"] = !on_floor
 	animation_tree["parameters/conditions/IsWalking"] = is_walking
@@ -128,3 +134,10 @@ func _physics_process(delta: float) -> void:
 	animation_tree["parameters/conditions/IsRunning"] = is_running
 	animation_tree["parameters/conditions/IsNotRunning"] = !is_running
 	animation_tree["parameters/conditions/is_dying"] = is_dying
+
+func attack1():
+	if (idle_node_name in playback.get_current_node()) or (walk_node_name in playback.get_current_node()) or (run_node_name in playback.get_current_node()):
+		
+		if Input.is_action_just_pressed("Skill"):
+			if !is_attacking:
+				playback.travel(attack1_node_name)
