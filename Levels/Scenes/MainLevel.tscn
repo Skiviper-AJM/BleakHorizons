@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://blbkgpv5ir51v"]
+[gd_scene load_steps=5 format=3 uid="uid://blbkgpv5ir51v"]
 
 [ext_resource type="MeshLibrary" uid="uid://deoo0e1p61i6j" path="res://Levels/MeshLibrary.tres" id="1_mff2p"]
-[ext_resource type="PackedScene" uid="uid://dbg7infqbmg2a" path="res://Player/Scenes/Player.tscn" id="2_gts2p"]
+[ext_resource type="PackedScene" uid="uid://dbg7infqbmg2a" path="res://Player/Scenes/player.tscn" id="2_akhee"]
+[ext_resource type="PackedScene" uid="uid://ctscipieoqifl" path="res://Enemies/Scenes/EnemyMelee.tscn" id="3_txn3b"]
 
 [sub_resource type="Environment" id="Environment_1luwm"]
 background_mode = 1
@@ -60,9 +61,11 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="player" parent="." instance=ExtResource("2_gts2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-walk_speed = 4
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1luwm")
+
+[node name="player" parent="." instance=ExtResource("2_akhee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 13)
+
+[node name="Warrior Skelly" parent="." instance=ExtResource("3_txn3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -2, 18)
