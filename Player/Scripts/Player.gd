@@ -97,10 +97,11 @@ func _physics_process(delta: float) -> void:
 			
 			
 			#handled running logic
-			if Input.is_action_pressed("Run") and (is_walking) and (!is_attacking):
+			if Input.is_action_pressed("Run") and (on_floor) and (is_walking) and (!is_attacking):
+					movement_speed = run_speed
+					is_running = true
+			elif (!on_floor) and (is_running):
 				movement_speed = run_speed
-				is_running = true
-				
 			else:
 				movement_speed = walk_speed
 				is_walking = true
