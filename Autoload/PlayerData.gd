@@ -3,7 +3,6 @@ extends Node
 signal health_changed(damage)
 
 var items = {
-	"default": preload("res://UI/Inventory/Item Resources/default stats/default_sword.tres"),
 	"long sword": preload("res://UI/Inventory/Item Resources/long Sword.tres"),
 	"small potion": preload("res://UI/Inventory/Item Resources/small potion.tres"),
 	"body armor": preload("res://UI/Inventory/Item Resources/body armor.tres"),

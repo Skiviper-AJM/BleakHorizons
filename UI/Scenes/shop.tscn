@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbuydieo7o4da"]
+[gd_scene load_steps=3 format=3 uid="uid://bbuydieo7o4da"]
 
 [ext_resource type="Script" path="res://UI/Scripts/shop.gd" id="1_i3hud"]
 [ext_resource type="Texture2D" uid="uid://da2prkn84me38" path="res://UI/Sprites/Items/Item__00.png" id="2_gptja"]
-[ext_resource type="PackedScene" uid="uid://boqyb455lua05" path="res://UI/Scenes/shop_item.tscn" id="2_wfy7k"]
 
 [node name="shop" type="CanvasLayer"]
 script = ExtResource("1_i3hud")
@@ -16,9 +15,6 @@ offset_bottom = 576.0
 [node name="shop_items" type="GridContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="shop_item" parent="shop_items" instance=ExtResource("2_wfy7k")]
-layout_mode = 2
 
 [node name="item_info" type="Control" parent="."]
 layout_mode = 3
