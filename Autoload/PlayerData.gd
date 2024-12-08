@@ -23,6 +23,10 @@ var current_exp: int = 0
 var exp_to_next_level: int = 100
 var player_level: int = 1
 
+
+func _ready():
+	gain_exp(1000)
+
 func heal_player(amount):
 	player_health += amount
 	if player_health > player_max_health:
