@@ -12,6 +12,7 @@ extends CharacterBody3D
 @export var walk_speed: int = 3
 @onready var run_speed: int = (walk_speed * 3) #run speed is automatically set to tripple the walk speed
 
+
 #anim node names
 var idle_node_name:String = "Idle"
 var walk_node_name:String = "Walk"
@@ -212,3 +213,22 @@ func _on_damage_detector_body_entered(body):
 	
 	if body.is_in_group("monster") and is_attacking:
 		body.hit(3)
+
+func hit(damage):
+		
+	if !just_hit:
+		get_node("just_hit").start()
+		PlayerData.player_health -= damage
+		just_hit = true
+		if PlayerData.player_health <= 0:
+			is_dying = true
+			playback.travel(death_node_name)
+		#knockback
+		var tween = create_tween()
+		tween.tween_property(self, "global_position", global_position - (direction/1.5), 0.2)
+		
+
+
+
+func _on_just_hit_timeout():
+	just_hit = false

@@ -76,3 +76,9 @@ func hit(damage):
 		var tween = create_tween()
 		tween.tween_property(self, "global_position", global_position - (direction/knockback), 0.2)
 		
+
+
+func _on_damage_detector_body_entered(body):
+	if body.is_in_group("player"):
+		body.hit(damage)
+
