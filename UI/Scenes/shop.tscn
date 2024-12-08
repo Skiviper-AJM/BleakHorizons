@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbuydieo7o4da"]
+
+[ext_resource type="Script" path="res://UI/Scripts/shop.gd" id="1_i3hud"]
+[ext_resource type="Texture2D" uid="uid://da2prkn84me38" path="res://UI/Sprites/Items/Item__00.png" id="2_gptja"]
+[ext_resource type="PackedScene" uid="uid://boqyb455lua05" path="res://UI/Scenes/shop_item.tscn" id="2_wfy7k"]
+
+[node name="shop" type="CanvasLayer"]
+script = ExtResource("1_i3hud")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 576.0
+
+[node name="shop_items" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="shop_item" parent="shop_items" instance=ExtResource("2_wfy7k")]
+layout_mode = 2
+
+[node name="item_info" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 208.0
+offset_top = 72.0
+offset_right = 440.0
+offset_bottom = 112.0
+
+[node name="item_name" type="Label" parent="item_info"]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 50
+text = "SWORD"
+
+[node name="item_desc" type="Label" parent="item_info"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 320.0
+offset_right = 256.0
+offset_bottom = 436.0
+text = "A sword, buy it or dont"
+
+[node name="item_sprite" type="Sprite2D" parent="item_info"]
+position = Vector2(120, 200)
+scale = Vector2(13.5, 14)
+texture = ExtResource("2_gptja")
+
+[node name="close" type="Button" parent="."]
+offset_left = 936.0
+offset_top = 512.0
+offset_right = 1066.58
+offset_bottom = 552.0
+text = "CLOSE"
+
+[node name="buy" type="Button" parent="."]
+offset_left = 432.0
+offset_top = 512.0
+offset_right = 560.0
+offset_bottom = 552.0
+text = "BUY"
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="buy" to="." method="_on_buy_pressed"]

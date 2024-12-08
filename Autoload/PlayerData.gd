@@ -11,6 +11,7 @@ var items = {
 	
 }
 
+var gold: int = 100
 var player_health: int = 10
 var player_max_health: int = 10
 

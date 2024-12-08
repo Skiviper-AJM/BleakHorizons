@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://boqyb455lua05"]
+
+[ext_resource type="Script" path="res://shop_item.gd" id="1_bcr3y"]
+[ext_resource type="Texture2D" uid="uid://da2prkn84me38" path="res://UI/Sprites/Items/Item__00.png" id="2_ldmp4"]
+
+[node name="shop_item" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_bcr3y")
+
+[node name="Item00" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(3, 3)
+texture = ExtResource("2_ldmp4")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 81.0
+offset_bottom = 64.0
+scale = Vector2(0.75, 1)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
