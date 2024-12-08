@@ -4,6 +4,7 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	get_node("shop").hide()
 	hp_bar.max_value = PlayerData.player_max_health
 	get_node("container/Profile").hide()
 	get_node("container").visible = get_tree().paused
@@ -11,7 +12,7 @@ func _ready() -> void:
 	GameNode.health_changed.connect(Callable(self, "_on_node_health_changed"))
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("OpenInventory"):
+	if Input.is_action_just_pressed("OpenInventory") and !PlayerData.shopping:
 		get_tree().paused = !get_tree().paused
 		get_node("container").visible = get_tree().paused
 		match get_tree().paused:

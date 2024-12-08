@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://da2prkn84me38" path="res://UI/Sprites/Items/Item__00.png" id="2_gptja"]
 
 [node name="shop" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_i3hud")
 
 [node name="Panel" type="Panel" parent="."]

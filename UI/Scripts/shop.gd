@@ -19,5 +19,6 @@ func _on_buy_pressed():
 
 func _on_close_pressed():
 	get_tree().paused = false
+	PlayerData.shopping = false
 	self.hide()
 

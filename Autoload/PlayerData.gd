@@ -24,6 +24,8 @@ var current_exp: int = 0
 var exp_to_next_level: int = 100
 var player_level: int = 1
 
+var shopping: bool = false
+
 func _ready():
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 

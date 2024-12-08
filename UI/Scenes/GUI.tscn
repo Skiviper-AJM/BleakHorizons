@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu2q4ulivow8b"]
+[gd_scene load_steps=6 format=3 uid="uid://bu2q4ulivow8b"]
 
 [ext_resource type="PackedScene" uid="uid://kquqvmsf0rpu" path="res://UI/Inventory/inventory.tscn" id="1_ab20j"]
 [ext_resource type="Script" path="res://UI/Scripts/GUI.gd" id="1_i7l3d"]
 [ext_resource type="Texture2D" uid="uid://cggx83alth0qy" path="res://UI/Sprites/ui_big_pieces.png" id="2_s438v"]
 [ext_resource type="PackedScene" uid="uid://dpipk3gygm2wu" path="res://UI/Scenes/profile.tscn" id="4_2vvo7"]
+[ext_resource type="PackedScene" uid="uid://bbuydieo7o4da" path="res://UI/Scenes/shop.tscn" id="5_l3u5k"]
 
 [node name="GUI" type="CanvasLayer"]
 process_mode = 3
@@ -83,6 +84,9 @@ text = "Inventory"
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "Profile"
+
+[node name="shop" parent="." instance=ExtResource("5_l3u5k")]
+process_mode = 3
 
 [connection signal="pressed" from="container/VBoxContainer/invetory_button" to="." method="_on_invetory_button_pressed"]
 [connection signal="pressed" from="container/VBoxContainer/profile_button" to="." method="_on_profile_button_pressed"]
