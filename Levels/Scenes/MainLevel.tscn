@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://blbkgpv5ir51v"]
+[gd_scene load_steps=6 format=3 uid="uid://blbkgpv5ir51v"]
 
 [ext_resource type="MeshLibrary" uid="uid://deoo0e1p61i6j" path="res://Levels/MeshLibrary.tres" id="1_mff2p"]
 [ext_resource type="PackedScene" uid="uid://dbg7infqbmg2a" path="res://Player/Scenes/player.tscn" id="2_akhee"]
 [ext_resource type="PackedScene" uid="uid://ctscipieoqifl" path="res://Enemies/Scenes/EnemyMelee.tscn" id="3_txn3b"]
+[ext_resource type="PackedScene" uid="uid://ch713cu7083rm" path="res://UI/Scenes/Game Over Overlay.tscn" id="4_a06ns"]
 
 [sub_resource type="Environment" id="Environment_1luwm"]
 background_mode = 1
@@ -70,3 +71,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 13)
 [node name="Warrior Skelly" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_txn3b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -2, 18)
 player = NodePath("../player")
+
+[node name="Game Over Overlay" parent="." instance=ExtResource("4_a06ns")]

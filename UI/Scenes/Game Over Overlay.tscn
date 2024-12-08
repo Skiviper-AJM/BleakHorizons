@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ch713cu7083rm"]
+
+[node name="Game Over Overlay" type="CanvasLayer"]
+layer = 2
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 314.0
+theme_override_font_sizes/font_size = 40
+text = "GAME OVER - TRY AGAIN!"
+horizontal_alignment = 1
+vertical_alignment = 1
