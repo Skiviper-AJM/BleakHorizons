@@ -32,7 +32,7 @@ func _physics_process(delta):
 	
 	if player:
 		direction = (player.global_transform.origin - self.global_transform.origin)
-	print(direction)
+	#print(direction)
 	move_and_slide()
 
 
@@ -97,14 +97,19 @@ func death():
 
 
 func _on_shoot_timeout():
+	
 	if is_instance_valid(player):
+		
 		if player in get_node("attack_player_detection").get_overlapping_bodies():
+			
 			shoot()
 		
 func shoot():
+	
+	
 	get_node("AnimationTree").get("parameters/playback").travel("Attack")
 	await get_tree().create_timer(0.3).timeout
-	var target_position = (player.global_position - self.global_psotion).normalized()
+	var target_position = (player.global_position - self.global_position).normalized()
 	#fireball here
 	var fireball_temp = fireball_scene.instantiate()
 	fireball_temp.direction = target_position

@@ -29,7 +29,7 @@ func _physics_process(delta):
 	
 	if player:
 		direction = (player.global_transform.origin - self.global_transform.origin)
-	print(direction)
+	#print(direction)
 	move_and_slide()
 
 
