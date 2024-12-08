@@ -13,6 +13,6 @@ item_defense = 4
 item_health = 0
 item_mana = 0
 stackable = false
-count = 24
+count = 1
 description = "Decent armor, uncomfortable but beats being shanked."
 item_texture = ExtResource("1_j05v8")
