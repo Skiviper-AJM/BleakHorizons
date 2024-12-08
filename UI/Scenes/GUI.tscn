@@ -86,7 +86,6 @@ layout_mode = 2
 text = "Profile"
 
 [node name="shop" parent="." instance=ExtResource("5_l3u5k")]
-process_mode = 3
 
 [connection signal="pressed" from="container/VBoxContainer/invetory_button" to="." method="_on_invetory_button_pressed"]
 [connection signal="pressed" from="container/VBoxContainer/profile_button" to="." method="_on_profile_button_pressed"]

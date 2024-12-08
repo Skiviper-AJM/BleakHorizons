@@ -6,8 +6,6 @@ var items = {
 	"long sword": preload("res://UI/Inventory/Item Resources/long Sword.tres"),
 	"small potion": preload("res://UI/Inventory/Item Resources/small potion.tres"),
 	"body armor": preload("res://UI/Inventory/Item Resources/body armor.tres"),
-	"default armor": preload("res://UI/Inventory/Item Resources/default stats/default_armor.tres")
-	
 }
 
 var gold: int = 100

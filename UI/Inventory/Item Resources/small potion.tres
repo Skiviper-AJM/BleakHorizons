@@ -7,7 +7,7 @@
 resource_name = "default_sword"
 script = ExtResource("2_l62wo")
 type = 3
-item_name = "Small Potion"
+item_name = "small potion"
 item_damage = 0
 item_defense = 0
 item_health = 5

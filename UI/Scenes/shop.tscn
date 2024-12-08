@@ -14,8 +14,10 @@ offset_right = 1088.0
 offset_bottom = 576.0
 
 [node name="shop_items" type="GridContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 624.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 384.0
 
 [node name="item_info" type="Control" parent="."]
 layout_mode = 3

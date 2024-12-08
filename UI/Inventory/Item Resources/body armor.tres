@@ -7,7 +7,7 @@
 resource_name = "default_sword"
 script = ExtResource("2_xvwa3")
 type = 9
-item_name = "Body Armor"
+item_name = "body armor"
 item_damage = 0
 item_defense = 4
 item_health = 0

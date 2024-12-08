@@ -7,7 +7,7 @@
 resource_name = "default_sword"
 script = ExtResource("2_aqy40")
 type = 9
-item_name = "Default Armor"
+item_name = "default armor"
 item_damage = 0
 item_defense = 0
 item_health = 0
