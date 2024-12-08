@@ -17,4 +17,7 @@ func _on_buy_pressed() -> void:
 
 
 func _on_close_pressed() -> void:
+	get_tree().paused = false
+	PlayerData.shopping = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	self.hide()
