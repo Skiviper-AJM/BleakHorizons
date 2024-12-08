@@ -54,6 +54,16 @@ func _input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	if !is_dying:
+		
+		#gravity to stick you to the floor
+		if !is_on_floor():
+			vertical_velocity += Vector3.DOWN*gravity*2*delta
+		else: 
+			vertical_velocity = Vector3.DOWN*gravity/10 #the /10 is needed for nice scaling using the gravity var
+		#jumping logic
+		if Input.is_action_just_pressed("Jump") and (!is_attacking) and is_on_floor():
+			vertical_velocity = Vector3.UP*jump_force #jump strength is set by jump_force
+		
 		#test values
 		angular_acceleration = 10
 		movement_speed = 0
@@ -71,3 +81,14 @@ func _physics_process(delta: float) -> void:
 			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, camrot_h.rotation.y, delta*angular_acceleration)
 		else: 
 			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta*angular_acceleration)
+		
+		#sets player movement (slows down while by 3x attacking)
+		if is_attacking:
+				horizontal_velocity = horizontal_velocity.lerp(direction.normalized()*(movement_speed/3), acceleration*delta)
+		else:
+				horizontal_velocity = horizontal_velocity.lerp(direction.normalized()*movement_speed, acceleration*delta)
+
+		velocity.z = horizontal_velocity.z + vertical_velocity.z
+		velocity.x = horizontal_velocity.x + vertical_velocity.x
+		velocity.y = vertical_velocity.y
+		move_and_slide()
