@@ -43,6 +43,7 @@ var _last_frame_was_on_floor = -INF
 
 
 @onready var camrot_h = get_node("camroot/h")
+@onready var campos_v = get_node("camroot")
 
 func _ready() -> void:
 	
@@ -60,7 +61,8 @@ func _input(event: InputEvent) -> void:
 #checks stair max angle
 func is_surface_too_steep(normal: Vector3) -> bool:
 	return normal.angle_to(Vector3.UP) > self.floor_max_angle
-	
+
+
 #snaps down the stairs the frame after they are left
 func _snap_down_to_stairs_check() -> void:
 	var did_snap := false
@@ -184,7 +186,7 @@ func _physics_process(delta: float) -> void:
 		if not _snap_up_stairs_check(delta):
 			move_and_slide()
 			_snap_down_to_stairs_check()
-		
+
 
 	
 	

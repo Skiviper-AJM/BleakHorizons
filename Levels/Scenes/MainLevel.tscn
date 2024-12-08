@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://blbkgpv5ir51v"]
 
 [ext_resource type="MeshLibrary" uid="uid://deoo0e1p61i6j" path="res://Levels/MeshLibrary.tres" id="1_mff2p"]
-[ext_resource type="PackedScene" uid="uid://dbg7infqbmg2a" path="res://Player/Scenes/player.tscn" id="2_gts2p"]
+[ext_resource type="PackedScene" uid="uid://dbg7infqbmg2a" path="res://Player/Scenes/Player.tscn" id="2_gts2p"]
 
 [sub_resource type="Environment" id="Environment_1luwm"]
 background_mode = 1
