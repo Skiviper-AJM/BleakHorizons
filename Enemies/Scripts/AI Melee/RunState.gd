@@ -15,7 +15,7 @@ func _ready() -> void:
 	run = true
 	AIController.Awakening = false
 	AIController.get_node("AnimationTree").get("parameters/playback").travel("Run")
-	
+
 func _physics_process(delta: float) -> void:
 	if AIController and run:
 		AIController.velocity.x = AIController.direction.x * AIController.SPEED

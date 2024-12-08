@@ -9,6 +9,14 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var state_controller = get_node("StateMachine")
 
+var direction: Vector3
+var Awakening:bool = false
+var Attacking:bool = false
+var health:int = 4
+var damage:int = 2
+var dying: bool = false
+var just_hit:bool = false
+
 func _ready() -> void:
 	state_controller.change_state("Idle")
 
