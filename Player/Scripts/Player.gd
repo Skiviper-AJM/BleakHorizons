@@ -206,3 +206,9 @@ func attack1():
 		if Input.is_action_just_pressed("Skill"):
 			if !is_attacking:
 				playback.travel(attack1_node_name)
+
+
+func _on_damage_detector_body_entered(body):
+	
+	if body.is_in_group("monster") and is_attacking:
+		body.hit(3)

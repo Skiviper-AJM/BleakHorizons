@@ -9,6 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var state_controller = get_node("StateMachine")
 @export var player: CharacterBody3D
+@export var knockback = 1.2 #smaller = more knockback
 
 var direction: Vector3
 var Awakening:bool = false
@@ -59,6 +60,19 @@ func _on_animation_tree_animation_finished(anim_name):
 	elif "Attack" in anim_name:
 		if player in $attack_player_detection.get_overlapping_bodies():
 			state_controller.change_state("Attack")
-	elif anim_name == "Death":
+	elif "Death" in anim_name:
 		self.queue_free()
 
+
+func hit(damage):
+		
+	if !just_hit:
+		get_node("just_hit").start()
+		health -= damage
+		just_hit = true
+		if health <= 0:
+			state_controller.change_state("Death")
+		#knockback
+		var tween = create_tween()
+		tween.tween_property(self, "global_position", global_position - (direction/knockback), 0.2)
+		
