@@ -17,11 +17,3 @@ script = ExtResource("1_56y5h")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 569.0
-offset_right = 1143.0
-offset_bottom = 651.0
-
-[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
