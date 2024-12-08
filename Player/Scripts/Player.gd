@@ -53,22 +53,34 @@ func _input(event: InputEvent) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	#calls a built in function to get a simple true/false on wether the player is touching the ground
+	var on_floor = is_on_floor()
+	
 	if !is_dying:
 		
 		#gravity to stick you to the floor
-		if !is_on_floor():
+		if !on_floor:
 			vertical_velocity += Vector3.DOWN*gravity*2*delta
 		else: 
 			vertical_velocity = Vector3.DOWN*gravity/10 #the /10 is needed for nice scaling using the gravity var
+		
 		#jumping logic
-		if Input.is_action_just_pressed("Jump") and (!is_attacking) and is_on_floor():
+		if Input.is_action_just_pressed("Jump") and (!is_attacking) and on_floor:
 			vertical_velocity = Vector3.UP*jump_force #jump strength is set by jump_force
 		
 		#test values
 		angular_acceleration = 10
 		movement_speed = 0
 		acceleration = 15
+		
+		#checks when the attack animation is playing to determine behaviour
+		if (attack1_node_name in playback.get_current_node()):
+			is_attacking = true
+		else:
+			is_attacking = false
+		
 		var h_rot = camrot_h.global_transform.basis.get_euler().y
+		
 		#handles WASD angle input direction
 		if (Input.is_action_pressed("MoveForward") || Input.is_action_pressed("MoveBack") || Input.is_action_pressed("MoveLeft") || Input.is_action_pressed("MoveRight")):
 			#subtracts opposing directions by each other when pressed simultaniously to prevent moving 
@@ -84,9 +96,11 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_pressed("Run") and (is_walking):
 				movement_speed = run_speed
 				is_running = true
+				
 			else:
 				movement_speed = walk_speed
 				is_walking = true
+				is_running = false
 		else:
 			is_walking = false
 			is_running = false
@@ -106,3 +120,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = horizontal_velocity.x + vertical_velocity.x
 		velocity.y = vertical_velocity.y
 		move_and_slide()
+	
+	animation_tree["parameters/conditions/IsOnFloor"] = on_floor
+	animation_tree["parameters/conditions/IsInAir"] = !on_floor
+	animation_tree["parameters/conditions/IsWalking"] = is_walking
+	animation_tree["parameters/conditions/IsNotWalking"] = !is_walking
+	animation_tree["parameters/conditions/IsRunning"] = is_running
+	animation_tree["parameters/conditions/IsNotRunning"] = !is_running
+	animation_tree["parameters/conditions/is_dying"] = is_dying
