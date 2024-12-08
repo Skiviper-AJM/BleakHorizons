@@ -1,14 +1,14 @@
 extends Node
 
 var AIController
-var run:bool = false
-
+var run:bool 
 
 func _ready() -> void:
 	AIController = get_parent().get_parent()
 	if AIController.Attacking:
 		await AIController.get_node("AnimationTree").animation_finished
 	else:
+		run = false
 		AIController.get_node("AnimationTree").get("parameters/playback").travel("Awaken")
 		AIController.Awakening = true
 		await AIController.get_node("AnimationTree").animation_finished

@@ -54,11 +54,11 @@ func _on_attack_player_detection_body_exited(body):
 
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == "Awaken":
+	if "Awaken" in anim_name:
 		Awakening = false
-	elif anim_name == "Attack":
-		Attacking = false
-		state_controller.change_state("Run")
+	elif "Attack" in anim_name:
+		if player in $attack_player_detection.get_overlapping_bodies():
+			state_controller.change_state("Attack")
 	elif anim_name == "Death":
 		self.queue_free()
 
