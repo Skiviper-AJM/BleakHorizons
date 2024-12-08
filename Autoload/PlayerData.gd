@@ -16,6 +16,13 @@ var player_max_health: int = 10
 var main_hand_equipped: ItemData
 var armor_equipped: ItemData
 
+var player_damage: int = 0 
+var player_defense: int = 0
+
+var current_exp: int = 0
+var exp_to_next_level: int = 100
+var player_level: int = 1
+
 func heal_player(amount):
 	player_health += amount
 	if player_health > player_max_health:

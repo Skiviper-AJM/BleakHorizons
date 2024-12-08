@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	get_node("container/Profile").hide()
 	get_node("container").visible = get_tree().paused
 
 func _physics_process(delta: float) -> void:

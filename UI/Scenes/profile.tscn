@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dpipk3gygm2wu"]
+[gd_scene load_steps=2 format=3 uid="uid://dpipk3gygm2wu"]
+
+[ext_resource type="Script" path="res://UI/Scripts/profile.gd" id="1_48ukk"]
 
 [node name="Profile" type="Control"]
 layout_mode = 3
@@ -9,3 +11,11 @@ offset_right = -1152.0
 offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_48ukk")
+
+[node name="stats_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 424.0
+offset_right = 608.0
+offset_bottom = 490.0
