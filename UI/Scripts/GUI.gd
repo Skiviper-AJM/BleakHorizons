@@ -15,3 +15,19 @@ func _physics_process(delta: float) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	
+
+
+
+func _on_invetory_button_pressed():
+	get_node("container/VBoxContainer/invetory_button").disabled = true
+	get_node("container/VBoxContainer/profile_button").disabled = false
+	get_node("container/Inventory").show()
+	get_node("container/Profile").hide()
+
+func _on_profile_button_pressed():
+	get_node("container/VBoxContainer/invetory_button").disabled = false
+	get_node("container/VBoxContainer/profile_button").disabled = true
+	get_node("container/Inventory").hide()
+	get_node("container/Profile").show()
+
+

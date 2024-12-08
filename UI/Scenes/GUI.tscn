@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu2q4ulivow8b"]
+[gd_scene load_steps=5 format=3 uid="uid://bu2q4ulivow8b"]
 
 [ext_resource type="PackedScene" uid="uid://kquqvmsf0rpu" path="res://UI/Inventory/inventory.tscn" id="1_ab20j"]
 [ext_resource type="Script" path="res://UI/Scripts/GUI.gd" id="1_i7l3d"]
 [ext_resource type="Texture2D" uid="uid://cggx83alth0qy" path="res://UI/Sprites/ui_big_pieces.png" id="2_s438v"]
+[ext_resource type="PackedScene" uid="uid://dpipk3gygm2wu" path="res://UI/Scenes/profile.tscn" id="4_2vvo7"]
 
 [node name="GUI" type="CanvasLayer"]
 process_mode = 3
@@ -45,7 +46,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="container"]
+[node name="BG" type="Panel" parent="container"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 138.0
@@ -58,3 +59,30 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 offset_right = -40.0
 offset_bottom = -40.0
+
+[node name="Profile" parent="container" instance=ExtResource("4_2vvo7")]
+layout_mode = 1
+offset_left = -143.0
+offset_top = 22.0
+offset_right = -183.0
+offset_bottom = -18.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="container"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 274.0
+offset_right = 200.0
+offset_bottom = 324.0
+
+[node name="invetory_button" type="Button" parent="container/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Inventory"
+
+[node name="profile_button" type="Button" parent="container/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "Profile"
+
+[connection signal="pressed" from="container/VBoxContainer/invetory_button" to="." method="_on_invetory_button_pressed"]
+[connection signal="pressed" from="container/VBoxContainer/profile_button" to="." method="_on_profile_button_pressed"]
