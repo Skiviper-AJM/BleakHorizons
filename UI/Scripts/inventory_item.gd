@@ -8,7 +8,7 @@ func _ready() -> void:
 		expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		texture = data.item_texture
-		tooltip_text = "Name: %s\n%s\n Stats: %s Damage, %s Defense, %s Health" % [data.item_name, data.description, data.item_damage, data.item_defense, data.item_health]
+		tooltip_text = "Name: %s\n%s\nStats: %s Damage, %s Defense, %s Health" % [data.item_name, data.description, data.item_damage, data.item_defense, data.item_health]
 		if data.stackable:
 			var label = Label.new()
 			label.text = str(data.count)

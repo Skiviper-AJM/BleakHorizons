@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://kquqvmsf0rpu"]
+[gd_scene load_steps=3 format=3 uid="uid://kquqvmsf0rpu"]
 
 [ext_resource type="Script" path="res://UI/Scripts/inventory_main.gd" id="1_56y5h"]
+[ext_resource type="Script" path="res://UI/Scripts/inventory_slot.gd" id="2_sqkc7"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -20,3 +21,67 @@ offset_top = 277.0
 offset_right = 696.0
 offset_bottom = 317.0
 columns = 6
+
+[node name="Body" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 456.0
+offset_right = 136.0
+offset_bottom = 496.0
+script = ExtResource("2_sqkc7")
+
+[node name="Feet" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 568.0
+offset_right = 136.0
+offset_bottom = 608.0
+script = ExtResource("2_sqkc7")
+
+[node name="OffHand" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 456.0
+offset_right = 192.0
+offset_bottom = 496.0
+script = ExtResource("2_sqkc7")
+
+[node name="MainHand" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 456.0
+offset_right = 80.0
+offset_bottom = 496.0
+script = ExtResource("2_sqkc7")
+
+[node name="Legs" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 512.0
+offset_right = 136.0
+offset_bottom = 552.0
+script = ExtResource("2_sqkc7")
+
+[node name="Head" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 400.0
+offset_right = 136.0
+offset_bottom = 440.0
+script = ExtResource("2_sqkc7")
+
+[node name="RingA" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 512.0
+offset_right = 248.0
+offset_bottom = 552.0
+script = ExtResource("2_sqkc7")
+
+[node name="RingB" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 568.0
+offset_right = 248.0
+offset_bottom = 608.0
+script = ExtResource("2_sqkc7")
