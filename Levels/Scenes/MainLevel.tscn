@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://blbkgpv5ir51v"]
+[gd_scene load_steps=12 format=3 uid="uid://blbkgpv5ir51v"]
 
+[ext_resource type="Script" path="res://Levels/Scripts/MainLevel.gd" id="1_1wfcs"]
 [ext_resource type="MeshLibrary" uid="uid://deoo0e1p61i6j" path="res://Levels/MeshLibrary.tres" id="1_mff2p"]
 [ext_resource type="PackedScene" uid="uid://dbg7infqbmg2a" path="res://Player/Scenes/player.tscn" id="2_akhee"]
 [ext_resource type="PackedScene" uid="uid://ctscipieoqifl" path="res://Enemies/Scenes/EnemyMelee.tscn" id="3_txn3b"]
@@ -24,6 +25,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 
 [node name="MainLevel" type="Node3D"]
+script = ExtResource("1_1wfcs")
 
 [node name="Floor" type="GridMap" parent="."]
 mesh_library = ExtResource("1_mff2p")

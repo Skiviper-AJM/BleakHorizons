@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 GameManager="*res://Autoload/GameManager.gd"
 Globals="*res://Autoload/Globals.gd"
 PlayerData="*res://Autoload/PlayerData.gd"
+Utils="*res://Autoload/Utils.gd"
 
 [gui]
 

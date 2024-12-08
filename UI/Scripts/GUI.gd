@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("OpenInventory") and !PlayerData.shopping:
+		Utils.save_game()
 		get_tree().paused = !get_tree().paused
 		get_node("container").visible = get_tree().paused
 		match get_tree().paused:

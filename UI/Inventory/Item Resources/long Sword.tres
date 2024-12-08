@@ -13,6 +13,6 @@ item_defense = 0
 item_health = 0
 item_mana = 0
 stackable = false
-count = 0
+count = 24
 description = "A long sword, better than the default."
 item_texture = ExtResource("1_lr4yw")
