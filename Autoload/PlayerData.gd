@@ -1,6 +1,6 @@
 extends Node
 
-
+signal health_changed(damage)
 
 var items = {
 	"default": preload("res://UI/Inventory/Item Resources/default stats/default_sword.tres"),
@@ -27,11 +27,18 @@ var player_level: int = 1
 func _ready():
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 
+func damage_player(amount):
+	self.emit_signal("health_changed", amount)
+	player_health -= amount
+	
+	
+	
 func _process(delta):
 	player_damage = main_hand_equipped.item_damage
 	player_defense = armor_equipped.item_defense
 
 func heal_player(amount):
+	self.emit_signal("health_changed", amount)
 	player_health += amount
 	if player_health > player_max_health:
 		player_health = player_max_health #prevents overheal
