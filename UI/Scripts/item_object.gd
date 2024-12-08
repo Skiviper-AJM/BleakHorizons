@@ -22,9 +22,9 @@ func _on_body_entered(body):
 		self.hide()
 		match rng:
 			0:
-				get_node("../../GUI/Inventory").add_item("long sword")
+				get_node("../../GUI/container/Inventory").add_item("long sword")
 			1:
-				get_node("../../GUI/Inventory").add_item("small potion")
+				get_node("../../GUI/container/Inventory").add_item("small potion")
 
 
 func _on_pickup_finished():
