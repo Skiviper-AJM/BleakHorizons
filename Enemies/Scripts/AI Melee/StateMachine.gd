@@ -12,6 +12,10 @@ func _ready() -> void:
 	
 
 func change_state(new_state:String): 
-	var state_temp = state[new_state].new()
-	state_temp.name = new_state
-	add_child(state_temp)
+	if get_child_count() != 0:
+		get_child(0).queue_free()
+		
+	if state.has(new_state):
+		var state_temp = state[new_state].new()
+		state_temp.name = new_state
+		add_child(state_temp)

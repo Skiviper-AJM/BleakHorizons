@@ -7,6 +7,10 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var state_controller = get_node("StateMachine")
+
+func _ready() -> void:
+	state_controller.change_state("Idle")
 
 func _physics_process(delta):
 	# Add the gravity.
