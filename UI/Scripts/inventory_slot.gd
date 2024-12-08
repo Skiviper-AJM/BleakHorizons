@@ -33,13 +33,14 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 func _physics_process(delta: float) -> void:
 	if get_child_count() > 0:
 		var item := get_child(0)
-		
-		#this is how you set the equipped items, can scale to other slots
-		if type == ItemData.Type.WEAPON:
-			PlayerData.main_hand_equipped = item.data
-		else:
-			PlayerData.main_hand_equipped =load("res://UI/Inventory/Item Resources/default_sword.tres")
-	
+		match type:
+			ItemData.Type.WEAPON:
+				PlayerData.main_hand_equipped = item.data
+			ItemData.Type.ARMOR:
+				PlayerData.armor_equipped = item.data
+			_:
+				PlayerData.main_hand_equipped =load("res://UI/Inventory/Item Resources/default_sword.tres")
+				PlayerData.armor_equipped =load("res://UI/Inventory/Item Resources/body armor.tres")
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

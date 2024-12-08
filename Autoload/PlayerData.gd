@@ -14,6 +14,7 @@ var player_health: int = 10
 var player_max_health: int = 10
 
 var main_hand_equipped: ItemData
+var armor_equipped: ItemData
 
 func heal_player(amount):
 	player_health += amount
