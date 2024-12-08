@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b4et3fqk65q6a"]
+
+[ext_resource type="Texture2D" uid="uid://da2prkn84me38" path="res://UI/Sprites/Items/Item__00.png" id="1_8jrr6"]
+[ext_resource type="Script" path="res://UI/Scripts/item_data.gd" id="2_r3g1n"]
+
+[resource]
+resource_name = "default_sword"
+script = ExtResource("2_r3g1n")
+type = 0
+item_name = "Default Sword"
+item_damage = 2
+item_defense = 0
+item_health = 0
+stackable = false
+count = 0
+description = ""
+item_texture = ExtResource("1_8jrr6")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://d0wlsqh5uui1x"]
+
+[ext_resource type="Texture2D" uid="uid://cu5mar4ikmgxe" path="res://UI/Sprites/Items/Item__24.png" id="1_23ws0"]
+[ext_resource type="Script" path="res://UI/Scripts/item_data.gd" id="2_y07bj"]
+
+[resource]
+resource_name = "default_sword"
+script = ExtResource("2_y07bj")
+type = 4
+item_name = "Shield"
+item_damage = 2
+item_defense = 2
+item_health = 0
+stackable = false
+count = 0
+description = "A basic shield, it could save your life."
+item_texture = ExtResource("1_23ws0")
