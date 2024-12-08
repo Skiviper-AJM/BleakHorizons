@@ -69,14 +69,28 @@ func _physics_process(delta: float) -> void:
 		movement_speed = 0
 		acceleration = 15
 		var h_rot = camrot_h.global_transform.basis.get_euler().y
-		#handles WASD directional input
+		#handles WASD angle input direction
 		if (Input.is_action_pressed("MoveForward") || Input.is_action_pressed("MoveBack") || Input.is_action_pressed("MoveLeft") || Input.is_action_pressed("MoveRight")):
 			#subtracts opposing directions by each other when pressed simultaniously to prevent moving 
+			
 			direction = Vector3(Input.get_action_strength("MoveLeft") - Input.get_action_strength("MoveRight"), 
 						0,
 						Input.get_action_strength("MoveForward") - Input.get_action_strength("MoveBack"))
 			direction = direction.rotated(Vector3.UP, h_rot).normalized()
-		
+			
+			
+			
+			#handled running logic
+			if Input.is_action_pressed("Run") and (is_walking):
+				movement_speed = run_speed
+				is_running = true
+			else:
+				movement_speed = walk_speed
+				is_walking = true
+		else:
+			is_walking = false
+			is_running = false
+			
 		if Input.is_action_pressed("LockOn"): #aim
 			player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, camrot_h.rotation.y, delta*angular_acceleration)
 		else: 
