@@ -37,6 +37,10 @@ var angular_acceleration: int
 var acceleration: int
 var just_hit:bool = false
 
+const MAX_STEP_HEIGHT = 0.5
+var _snapped_to_stairs_last_frame := false
+var _last_frame_was_on_floor = -INF
+
 @onready var camrot_h = get_node("camroot/h")
 
 func _ready() -> void:
@@ -51,12 +55,36 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("LockOn"): #aim
 		direction = camrot_h.global_transform.basis.z
 	
+
+#checks stair max angle
+func is_surface_too_steep(normal: Vector3) -> bool:
+	return normal.angle_to(Vector3.UP) > self.floor_max_angle
 	
+#snaps down the stairs the frame after they are left
+func _snap_down_to_stairs_check() -> void:
+	var did_snap := false
+	var was_on_floor_last_frame = Engine.get_physics_frames() - _last_frame_was_on_floor == 1
+	if not is_on_floor() and velocity.y <= 0 and (was_on_floor_last_frame or _snapped_to_stairs_last_frame):
+		var body_test_result = PhysicsTestMotionResult3D.new()
+		if _run_body_test_motion(self.global_transform, Vector3(0, -MAX_STEP_HEIGHT,0), body_test_result):
+			var translate_y = body_test_result.get_travel().y
+
+func _run_body_test_motion(from : Transform3D, motion : Vector3, result = null) -> bool:
+	if not result: result = PhysicsTestMotionResult3D.new()
+	var params = PhysicsTestMotionParameters3D.new()
+	params.from = from
+	params.motion = motion
+	return PhysicsServer3D.body_test_motion(self.get_rid(), params, result)
+
 func _physics_process(delta: float) -> void:
 	#calls a built in function to get a simple true/false on wether the player is touching the ground
 	var on_floor = is_on_floor()
 	
 	if !is_dying:
+		
+		#check for stair snapping
+		if on_floor:
+			_last_frame_was_on_floor = Engine.get_physics_frames()
 		
 		#checks states
 		attack1()
@@ -125,6 +153,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = horizontal_velocity.x + vertical_velocity.x
 		velocity.y = vertical_velocity.y
 		move_and_slide()
+	
+
+	
 	
 	
 	#binds the animation trees conditions to the ones in this script
