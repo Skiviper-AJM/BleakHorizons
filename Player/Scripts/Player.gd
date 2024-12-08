@@ -83,7 +83,7 @@ func _snap_up_stairs_check(delta) -> bool:
 	
 	var down_check_result = PhysicsTestMotionResult3D.new()
 	if (_run_body_test_motion(step_pos_with_clearance, Vector3(0,-MAX_STEP_HEIGHT*2, 0), down_check_result)
-	and (down_check_result.get_collider().is_class("StaticBody3D") or down_check_result.get_collider().is_class("CSGShape3D"))):
+	and (down_check_result.get_collider().is_class("StaticBody3D") or down_check_result.get_collider().is_class("GridMap"))):
 		var step_height = ((step_pos_with_clearance.origin + down_check_result.get_travel()) - self.global_position).y
 		
 		if step_height > MAX_STEP_HEIGHT or step_height <= 0.01 or (down_check_result.get_collision_point() - self.global_position).y > MAX_STEP_HEIGHT: return false
