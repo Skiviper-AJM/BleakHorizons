@@ -76,6 +76,7 @@ func _snap_down_to_stairs_check() -> void:
 			did_snap = true
 		_snapped_to_stairs_last_frame = did_snap
 
+
 func _run_body_test_motion(from : Transform3D, motion : Vector3, result = null) -> bool:
 	if not result: result = PhysicsTestMotionResult3D.new()
 	var params = PhysicsTestMotionParameters3D.new()
@@ -169,7 +170,7 @@ func _physics_process(delta: float) -> void:
 	
 	#binds the animation trees conditions to the ones in this script
 	animation_tree["parameters/conditions/IsOnFloor"] = on_floor
-	animation_tree["parameters/conditions/IsInAir"] = !on_floor
+	animation_tree["parameters/conditions/IsInAir"] = !on_floor and not _snapped_to_stairs_last_frame
 	animation_tree["parameters/conditions/IsWalking"] = is_walking
 	animation_tree["parameters/conditions/IsNotWalking"] = !is_walking
 	animation_tree["parameters/conditions/IsRunning"] = is_running
