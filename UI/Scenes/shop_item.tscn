@@ -9,7 +9,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_bcr3y")
 
-[node name="Item00" type="Sprite2D" parent="."]
+[node name="image" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
 scale = Vector2(3, 3)
 texture = ExtResource("2_ldmp4")
