@@ -223,7 +223,7 @@ func hit(damage):
 		if PlayerData.player_health <= 0:
 			is_dying = true
 			playback.travel(death_node_name)
-			get_node("../Game Over Overlay").game_over()
+			
 		#knockback
 		var tween = create_tween()
 		tween.tween_property(self, "global_position", global_position - (direction/1.5), 0.2)
@@ -233,3 +233,9 @@ func hit(damage):
 
 func _on_just_hit_timeout():
 	just_hit = false
+
+
+func _on_animation_tree_animation_finished(anim_name):
+	if "Death" in anim_name:
+		await get_tree().create_timer(1).timeout
+		get_node("../Game Over Overlay").game_over()

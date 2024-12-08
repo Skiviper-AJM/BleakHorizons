@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://UI/Scripts/Game Over Overlay.gd" id="1_ckgsf"]
 
 [node name="Game Over Overlay" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("1_ckgsf")
 
