@@ -17,6 +17,7 @@ func _ready() -> void:
 	AIController.get_node("AnimationTree").get("parameters/playback").travel("Run")
 	
 func _physics_process(delta: float) -> void:
-	if AIController:
-		AIController.velocity.x = 0
-		AIController.velocity.z = 0 
+	if AIController and run:
+		AIController.velocity.x = AIController.direction.x * AIController.SPEED
+		AIController.velocity.z = AIController.direction.z * AIController.SPEED
+		AIController.look_at(AIController.global_transform.origin +AIController.direction, Vector3(0,1,0))
