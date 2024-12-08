@@ -30,3 +30,35 @@ func _physics_process(delta):
 		direction = (player.global_transform.origin - self.global_transform.origin)
 	print(direction)
 	move_and_slide()
+
+
+func _on_just_hit_timeout():
+	just_hit = false
+
+
+func _on_chase_player_detection_body_entered(body):
+	if "player" in body.name and !dying:
+		state_controller.change_state("Run")
+
+func _on_chase_player_detection_body_exited(body):
+	if "player" in body.name and !dying:
+		state_controller.change_state("Idle")
+
+func _on_attack_player_detection_body_entered(body):
+	if "player" in body.name and !dying:
+		state_controller.change_state("Attack")
+
+func _on_attack_player_detection_body_exited(body):
+	if "player" in body.name and !dying:
+		state_controller.change_state("Run")
+
+
+func _on_animation_tree_animation_finished(anim_name):
+	if anim_name == "Awaken":
+		Awakening = false
+	elif anim_name == "Attack":
+		Attacking = false
+		state_controller.change_state("Run")
+	elif anim_name == "Death":
+		self.queue_free()
+

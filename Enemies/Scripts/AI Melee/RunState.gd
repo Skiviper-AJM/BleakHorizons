@@ -7,11 +7,11 @@ var run:bool = false
 func _ready() -> void:
 	AIController = get_parent().get_parent()
 	if AIController.Attacking:
-		await AIController.get_node("AnimationTree").finished_animation
+		await AIController.get_node("AnimationTree").animation_finished
 	else:
 		AIController.get_node("AnimationTree").get("parameters/playback").travel("Awaken")
 		AIController.Awakening = true
-		await AIController.get_node("AnimationTree").finished_animation
+		await AIController.get_node("AnimationTree").animation_finished
 	run = true
 	AIController.Awakening = false
 	AIController.get_node("AnimationTree").get("parameters/playback").travel("Run")
